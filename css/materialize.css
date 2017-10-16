@@ -4284,6 +4284,9 @@ nav .brand-logo.center {
     left: 50%;
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%);
+            width: 70%;
+            margin: 0 auto;
+
   }
   nav .brand-logo.left, nav .brand-logo.right {
     padding: 0;
@@ -5786,6 +5789,12 @@ button.btn-floating {
   border: 0;
   background-color: #fff;
 }
+@media only screen and (min-width: 992px) {
+  #nav-mobile{
+    display: none;
+  }
+}
+
 
 .side-nav .collapsible-body li a,
 .side-nav.fixed .collapsible-body li a {
