@@ -1,7 +1,8 @@
 
-<nav class="nav-extended" style="background-color: #2962ff;">  
+
+<nav class="nav-extended" >
     <div class="nav-background">
-      <div class="pattern active" style="background-image: url('<?php echo base_url();?>/img/nav.png');"></div>
+      <div class="pattern active" style="background-image: url('<?php echo base_url();?>/img/nav.png');" ></div>
     </div>
     <div class="nav-wrapper container">
     <a href="#" itemprop="url" class="brand-logo site-logo">Dictados Musicales</a>
@@ -10,8 +11,8 @@
 
     <ul class="right hide-on-med-and-down">
       <li><a href="#" class="waves-effect waves-light">Inicio</a></li>
-      <li><a href="#" class="waves-effect waves-light">Nosotros</a></li>    
-      <li><a href="#" class="waves-effect waves-light">Contacto</a></li>      
+      <li><a href="#" class="waves-effect waves-light">Nosotros</a></li>
+      <li><a href="#" class="waves-effect waves-light">Contacto</a></li>
       <li><a href="#" class="waves-effect waves-light"><i class="material-icons">search</i></a></li>
       <li><a href="#" class="waves-effect waves-light">Iniciar Sesión</a></li>
       <li><a href="#" class="waves-effect waves-light">Registrarse</a></li>
@@ -24,11 +25,11 @@
   </div>
 </nav>
 
-<ul class="side-nav" id="nav-mobile">  
+<ul class="side-nav" id="nav-mobile">
   <li><a href="#" class="waves-effect waves-blue"><i class="material-icons left">home</i>Inicio</a></li>
-  <li><a href="#" class="waves-effect waves-blue"><i class="material-icons left">info_outline</i>Nosotros</a></li>    
+  <li><a href="#" class="waves-effect waves-blue"><i class="material-icons left">info_outline</i>Nosotros</a></li>
   <li><a href="#" class="waves-effect waves-blue"><i class="material-icons left">account_circle</i>Contacto</a></li>
   <li><a href="#" class="waves-effect waves-blue"><i class="material-icons left">input</i>Iniciar Sesión</a></li>
-  <li><a href="#" class="waves-effect waves-blue"><i class="material-icons left">create</i>Registrarse</a></li>  
+  <li><a href="#" class="waves-effect waves-blue"><i class="material-icons left">create</i>Registrarse</a></li>
   <li><a href="#" class="waves-effect waves-blue"><i class="material-icons left">search</i>Buscar</a></li>
 </ul>
