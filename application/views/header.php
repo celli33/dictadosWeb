@@ -8,17 +8,13 @@
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-
-    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-
-    <link href="css/gallery-materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link rel="stylesheet" href="css/estilos.css">
+    <link href="<?php echo base_url();?>css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="<?php echo base_url();?>css/gallery-materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link rel="stylesheet" href="<?php echo base_url();?>css/estilos.css" type="text/css" media="screen,projection"/>
 
     <body>
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-      <script type="text/javascript" src="js/materialize.min.js"></script>
-      <script src="js/init.js"></script>
-      <script src="js/main.js" type="text/javascript"></script>
+      <script type="text/javascript" src="<?php echo base_url();?>js/materialize.min.js"></script>
+      <script src="<?php echo base_url();?>js/main.js" type="text/javascript"></script>
     </body>
