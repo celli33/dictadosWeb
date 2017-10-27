@@ -1,3 +1,30 @@
 nav.nav-extended{
   background-color: #2962ff;
 }
+
+div.contenedor{
+  height: 500px;
+  width: 100%;
+  background-color: #dbcb7d;
+  position: relative;
+}
+
+div.notas-sueltas div.clave{
+  position: absolute;
+  top: 169px;
+  left: -63px;
+}
+
+div.pentagrama{
+  width: 100%;
+}
+/*
+div.pentagrama span{
+  position: absolute;
+  border-top:  1px solid black;
+  width: 100%;
+  padding: 10px;
+  top: 187px;
+  left: -63px;
+}
+*/
