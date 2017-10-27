@@ -6,6 +6,9 @@
    $('.parallax').parallax();
  });
 
+  var line= document.querySelector(".line");
+  console.log(line);
+
 
 
 });
