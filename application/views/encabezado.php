@@ -1,5 +1,3 @@
-
-
 <nav class="nav-extended" >
     <div class="nav-background">
       <div class="pattern active" style="background-image: url('<?php echo base_url();?>/img/nav.png');" ></div>
@@ -10,12 +8,12 @@
     <a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
 
     <ul class="right hide-on-med-and-down">
-      <li><a href="#" class="waves-effect waves-light">Inicio</a></li>
+      <li><a href="<?php echo base_url();?>index.php/Welcome/index" class="waves-effect waves-light">Inicio</a></li>
       <li><a href="#" class="waves-effect waves-light">Nosotros</a></li>
       <li><a href="#" class="waves-effect waves-light">Contacto</a></li>
       <li><a href="#" class="waves-effect waves-light"><i class="material-icons">search</i></a></li>
-      <li><a href="#" class="waves-effect waves-light">Iniciar Sesión</a></li>
-      <li><a href="<?php echo base_url();?>index.php/Welcome/registrarse" class="waves-effect waves-light">Registrarse</a></li>
+      <li><a href="<?php echo base_url();?>index.php/Welcome/login" class="waves-effect waves-light">Iniciar Sesión</a></li>
+      <li><a href="<?php echo base_url();?>index.php/Welcome/registro" class="waves-effect waves-light">Registrarse</a></li>
 
     </ul>
   </div>
