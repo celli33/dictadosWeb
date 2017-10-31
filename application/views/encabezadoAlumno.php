@@ -13,7 +13,6 @@
         <li><a href="#" class="waves-effect waves-light">Iniciar Dictado</a></li>
         <li><a href="#" class="waves-effect waves-light"><i class="material-icons">search</i></a></li>
         <li><a href="<?php echo base_url();?>index.php/Welcome/cerrarSesion" class="waves-effect waves-light">Cerrar Sesión</a></li>
-
       </ul>
     </div>
     <div class="nav-header center">

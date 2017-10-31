@@ -39,29 +39,37 @@ class Welcome extends CI_Controller {
 	///metodos
 
 	public function iniciarSesion(){
-		$data["data"] = array(
-			'email' => $this->input->post('email'),
-			'contraseña' => $this->input->post('contraseña')
-			);
-		$data["data"]=$this->bases_model->iniciarSesion($data["data"]);
-		//comprobar si existe el usuario con el password correcto
-		//inicialmente solo se logea el alumno :3
-		if($data["data"]==FALSE){
-			redirect('/Welcome/login/', 'location');							
-		}else{
-			foreach ($data["data"]-> result() as $row) {
-				$datasession = array(
-						'idPersona' => $row->idPersona,
-						'nombre' => $row->nombre,
-						'a_paterno' => $row->a_paterno,
-						'a_materno' => $row->a_materno,
-						'usuario' => $row->usuario,
-						'correo' => $row->correo,
-						'contraseña' => $row->contraseña,
-					);
+
+		$this->form_validation->set_rules('email','email','required');
+		$this->form_validation->set_rules('contraseña','contraseña','required');
+		$this->form_validation->set_message('required','<div class="red-text" >El campo %s es obligatorio</div>');
+		if ($this->form_validation->run() != FALSE){
+			$data["data"] = array(
+				'email' => $this->input->post('email'),
+				'contraseña' => $this->input->post('contraseña')
+				);
+			$data["data"]=$this->bases_model->iniciarSesion($data["data"]);
+			//comprobar si existe el usuario con el password correcto
+			//inicialmente solo se logea el alumno :3
+			if($data["data"]==FALSE){
+				redirect('/Welcome/login/', 'location');							
+			}else{
+				foreach ($data["data"]-> result() as $row) {
+					$datasession = array(
+							'idPersona' => $row->idPersona,
+							'nombre' => $row->nombre,
+							'a_paterno' => $row->a_paterno,
+							'a_materno' => $row->a_materno,
+							'usuario' => $row->usuario,
+							'correo' => $row->correo,
+							'contraseña' => $row->contraseña,
+						);
+				}
+				$this->session->set_userdata($datasession);
+				redirect('/Welcome/alumno/', 'location');
 			}
-			$this->session->set_userdata($datasession);
-			redirect('/Welcome/alumno/', 'location');
+		}else{
+			$this->login();
 		}
 	}
 
@@ -73,17 +81,27 @@ class Welcome extends CI_Controller {
 	}
 
 	public function registrarse(){
-
-	    $data["data"] = array( 
-	    	'nombre'=> $this->input->post('nombre'), 
-	    	'paterno'=> $this->input->post('paterno'),
-	    	'materno'=> $this->input->post('materno'), 
-	    	'usuario'=> $this->input->post('usuario'),
-	    	'email'=> $this->input->post('email'), 
-	    	'contraseña'=> $this->input->post('contraseña'),
-	    	);
-	    
-	    $this->bases_model->registrarse($data["data"]);
-	    $this->index();
+		$this->form_validation->set_rules('nombre','nombre','required');
+		$this->form_validation->set_rules('paterno','paterno','required');
+		$this->form_validation->set_rules('materno','materno','required');
+		$this->form_validation->set_rules('usuario','usuario','required');
+		$this->form_validation->set_rules('email','email','required');
+		$this->form_validation->set_rules('contraseña','contraseña','required');
+		$this->form_validation->set_message('required','<div class="red-text" >El campo %s es obligatorio</div>');
+		if ($this->form_validation->run() != FALSE){
+		    $data["data"] = array( 
+		    	'nombre'=> $this->input->post('nombre'), 
+		    	'paterno'=> $this->input->post('paterno'),
+		    	'materno'=> $this->input->post('materno'), 
+		    	'usuario'=> $this->input->post('usuario'),
+		    	'email'=> $this->input->post('email'), 
+		    	'contraseña'=> $this->input->post('contraseña'),
+		    	);
+		    
+		    $this->bases_model->registrarse($data["data"]);
+		    $this->index();
+		}else{
+			$this->registro();
+		}
 	}
 }
