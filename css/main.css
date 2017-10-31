@@ -1,0 +1,69 @@
+nav.nav-extended{
+  background-color: #2962ff;
+}
+
+div.contenedor{
+  position: relative;
+  height: 500px;
+  width: 100%;
+  background-color: #dbcb7d;
+  display: none;
+
+}
+
+a.button{
+  background-color: #039be5;
+  color: black;
+  border-radius: 10px;
+  padding: 10px;
+  margin-left: 10px;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.line-space{
+  position: absolute;
+  left: 69px;
+  width: 100%;
+  height: 10px;
+  padding-top: 4px;
+}
+
+.line{
+  padding-left: 100%;
+  width: 100%;
+  height: 1px;
+  border-top: 1px solid black;
+  margin: auto;
+}
+
+span.nota{
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  border:1px solid black;
+  display: none;
+}
+
+.notaF6, .notaE6, .notaD6, .notaC6, .notaB5, .notaA5, .notaG5, .notaF5, .notaE5, .notaD5{
+  position: absolute;
+  top:-2px;
+  left: auto;
+}
+
+div.clave{
+  top: 170px;
+  left: 0px;
+  max-width: 100%;
+position: absolute;
+
+}
+
+div.pentagrama{
+  width: 100%;
+}
+
+.datos-dictado{
+  margin: 10px;
+  padding: 10px;
+}
