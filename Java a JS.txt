@@ -1,0 +1,339 @@
+import java.util.ArrayList;
+import java.util.Random;
+
+
+//clase Nota que tiene dos atributos el nombre de la nota 
+//y un arrayList que referencía a sus notas posibles
+public class Nota {
+	
+	private String name;
+	private ArrayList<Nota> notasPosibles;
+	private int aux;
+	
+	//constructor de la clase Nota que le da un nombre
+	Nota(String name)
+	{
+		this.name=name;
+		this.notasPosibles= new ArrayList<Nota>();
+	}
+	
+	//metodo que agrega las notas posibles al objeto nota
+	//recibe un Array de notas que contiene las notas a las que puede ir el objeto nota
+	public void notasPosibles(Nota...notasPosibles)
+	{
+		//inicialicamos el array de notas posibles
+		this.notasPosibles= new ArrayList<Nota>();
+		
+		//System.out.println("tamaño del Array notas Posibles: "+notasPosibles.length+ " de la nota "+this.name);
+		//hacemos un for segun el tamaño del array recibido para agregar las notas al array de notasPosibles
+		for(int i=0;i<notasPosibles.length;i++)
+		{ //agregamos la nota posible al arrayList
+		   this.notasPosibles.add(notasPosibles[i]);
+		   //System.out.println("Agregando Nota Posible:"+ notasPosibles[i].name+" a nota "+this.name);
+		}
+		
+		
+	}
+	
+
+	//getters y setters
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
+	//metodo que elige la nota siguiente en el dictado
+	public Nota eligeNotaSiguiente()
+	{	
+		//Random rnd= new Random();					<-----Falta
+		//casteamos el aleatorio y lo ponemos en un rango de 0 a 100 
+		//para hacer más amplio el rango de cambio de notas
+		//aux=(int) (rnd.nextDouble()*101);				<-----Falta
+		//System.out.println(aux);
+		
+		//nos aseguramos de que si la nota es b4 no baje más
+		if(this.name.equals("b4"))
+		{//System.out.println("Agregando nota: "+this.notasPosibles.get(0).name+" al dictado");
+		 return(notasPosibles.get(0));
+		}
+		//nos aseguramos de que si la nota es g6 no suba más
+		if(this.name.equals("g6"))
+		{
+			//System.out.println("Agregando nota: "+this.notasPosibles.get(0).name+" al dictado");
+			 return(notasPosibles.get(0));
+		}
+		//si el aux es menor a 50 va a la posicion 0 de su arraylist 
+		if(aux<=50)
+		{
+		  //System.out.println("Agregando nota: "+this.notasPosibles.get(0).name+" al dictado");
+		 return(notasPosibles.get(0));
+			
+		}
+		//si el aux es mayor a 50 va a la posicion de su arraylist
+		if(aux>50)
+		{
+			//System.out.println("Agregando nota: "+this.notasPosibles.get(1).name+" al dictado");
+			 return(notasPosibles.get(1));
+		}
+		
+		return(null);
+	}
+
+}
+
+//clase que contiene dos atributos las notas posibles del dictado facil
+//un array de notas que contiene las notas posibles
+public class DictadoFacil {
+	
+	//
+	Nota b4,c5,d5,e5,f5,g5,a5,b5,c6,d6,e6,f6,g6;
+	Nota[] notasPosibles;
+	public final static int   numNotasposibles=13;
+	//lista que guarda el dictado en String
+	ArrayList<String> dictadoString;
+	public DictadoFacil()
+	{
+		//inicialicamos el array ahora inicialicamos el array con una variable final
+		//para así sea fácil modificar el número de elementos posibles en el dictado
+		notasPosibles= new Nota[ numNotasposibles];
+		//al array de notas le agregamos la nota inicializada con el nombre del nota
+		notasPosibles[0]=b4=new Nota("b4");
+		notasPosibles[1]=c5=new Nota("c5");
+		notasPosibles[2]=d5= new Nota("d5");
+		notasPosibles[3]=e5= new Nota("e5");
+		notasPosibles[4]=f5= new Nota("f5");
+		notasPosibles[5]=g5= new Nota("g5");
+		notasPosibles[6]=a5= new Nota("a5");
+		notasPosibles[7]=b5= new Nota("b5");
+		notasPosibles[8]=c6= new Nota("c6");
+		notasPosibles[9]=d6= new Nota("d6");
+		notasPosibles[10]=e6= new Nota("e6");
+		notasPosibles[11]=f6= new Nota("f6");
+		notasPosibles[12]=g6= new Nota("g6");
+
+		//inicializamos el arraylist donde guardaremos el nombre de las notas para relacionarlos 
+		//con el archivo raw/"nombre de la nota" que contiene el sonido
+		dictadoString= new ArrayList<String>();
+		
+	}
+	
+	
+	public ArrayList<String> generaDictado(int numNotas)
+	{
+		ArrayList<Nota> dictado= new ArrayList<Nota>();
+		
+		//llamamos el metodo notasPosibles de la nota y le agregamos las notas posibles
+		b4.notasPosibles(c5);
+		c5.notasPosibles(b4,d5);
+		d5.notasPosibles(c5,e5);
+		e5.notasPosibles(d5,f5);
+		f5.notasPosibles(e5,g5);
+		g5.notasPosibles(f5,a5);
+		a5.notasPosibles(g5,b5);
+		b5.notasPosibles(a5,c6);
+		c6.notasPosibles(b5,d6);
+		d6.notasPosibles(c6,e6);
+		e6.notasPosibles(d6,f6);
+		f6.notasPosibles(e6,g6);
+		g6.notasPosibles(f6);
+		
+		//generamos la nota inicial del dictado aleatoramiente
+		//dictado.add(this.generaNotaInicial());				<-----Falta
+		System.out.println("nota inicial "+ dictado.get(0).getName());
+		dictadoString.add(dictado.get(0).getName());
+		int aux=1;
+		while(dictado.size()<20)
+		{
+			dictado.add(dictado.get(aux-1).eligeNotaSiguiente());
+			dictadoString.add(dictado.get(aux).getName());
+			//System.out.println("agregada nota: "+ dictado.get(aux).getName());
+			aux++;
+			
+		}
+		
+		//por ahora no regresemas ningun dictado
+		return(dictadoString);
+	}
+	
+	//metodo que genera la nota inicial del dictado
+	//public Nota generaNotaInicial()				<-----Falta
+	{
+		//definimos un random para el numero aleatorio
+		//Random rnd= new Random();					<-----Falta
+		//casteamos el aleatorio y lo ponemos en un rango de 0 al numero de notas Posibles
+		//int aux=(int) (rnd.nextDouble()*this.numNotasposibles);		<-----Falta
+		
+		//retornamos la primera nota
+		//return(notasPosibles[aux]);				<-----Falta
+	}
+	
+}
+
+
+public class TestFacil {
+	
+	
+	
+	
+	public static void main(String[] args)
+	{ 
+		//generamos objeto de la clase  DictadoFacil que generará los dictados para el nivel facil
+		DictadoFacil df= new DictadoFacil();
+		//creamos un arrayList de string que guardará la sucesion de notas del dictado
+		//mandamos el número de notas que contendrá el dictado	
+		ArrayList<String> dictado;
+		dictado=df.generaDictado(20);
+		int index=0;
+		System.out.println("");
+		while(index<dictado.size())
+		{	
+			//System.out.print(dictado.get(index)+",");			<-----Falta
+			index++;
+		}	
+	}
+}
+
+
+
+
+/* Generated from Java with JSweet 2.0.0 - http://www.jsweet.org */
+var Nota = (function () {
+    function Nota(name) {
+        this.name = null;
+        this.__notasPosibles = null;
+        this.aux = 0;
+        this.name = name;
+        this.__notasPosibles = ([]);
+    }
+    Nota.prototype.notasPosibles = function () {
+        var notasPosibles = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            notasPosibles[_i] = arguments[_i];
+        }
+        this.__notasPosibles = ([]);
+        for (var i = 0; i < notasPosibles.length; i++) {
+            /* add */ (this.__notasPosibles.push(notasPosibles[i]) > 0);
+        }
+        ;
+    };
+    Nota.prototype.getName = function () {
+        return this.name;
+    };
+    Nota.prototype.setName = function (name) {
+        this.name = name;
+    };
+    Nota.prototype.eligeNotaSiguiente = function () {
+        if ((function (o1, o2) { if (o1 && o1.equals) {
+            return o1.equals(o2);
+        }
+        else {
+            return o1 === o2;
+        } })(this.name, "b4")) {
+            return (this.__notasPosibles[0]);
+        }
+        if ((function (o1, o2) { if (o1 && o1.equals) {
+            return o1.equals(o2);
+        }
+        else {
+            return o1 === o2;
+        } })(this.name, "g6")) {
+            return (this.__notasPosibles[0]);
+        }
+        if (this.aux <= 50) {
+            return (this.__notasPosibles[0]);
+        }
+        if (this.aux > 50) {
+            return (this.__notasPosibles[1]);
+        }
+        return (null);
+    };
+    return Nota;
+}());
+Nota["__class"] = "Nota";
+var DictadoFacil = (function () {
+    function DictadoFacil() {
+        this.b4 = null;
+        this.c5 = null;
+        this.d5 = null;
+        this.e5 = null;
+        this.f5 = null;
+        this.g5 = null;
+        this.a5 = null;
+        this.b5 = null;
+        this.c6 = null;
+        this.d6 = null;
+        this.e6 = null;
+        this.f6 = null;
+        this.g6 = null;
+        this.notasPosibles = null;
+        this.dictadoString = null;
+        (function () {
+        })();
+        this.notasPosibles = new Array(DictadoFacil.numNotasposibles);
+        this.notasPosibles[0] = this.b4 = new Nota("b4");
+        this.notasPosibles[1] = this.c5 = new Nota("c5");
+        this.notasPosibles[2] = this.d5 = new Nota("d5");
+        this.notasPosibles[3] = this.e5 = new Nota("e5");
+        this.notasPosibles[4] = this.f5 = new Nota("f5");
+        this.notasPosibles[5] = this.g5 = new Nota("g5");
+        this.notasPosibles[6] = this.a5 = new Nota("a5");
+        this.notasPosibles[7] = this.b5 = new Nota("b5");
+        this.notasPosibles[8] = this.c6 = new Nota("c6");
+        this.notasPosibles[9] = this.d6 = new Nota("d6");
+        this.notasPosibles[10] = this.e6 = new Nota("e6");
+        this.notasPosibles[11] = this.f6 = new Nota("f6");
+        this.notasPosibles[12] = this.g6 = new Nota("g6");
+        this.dictadoString = ([]);
+    }
+    DictadoFacil.prototype.generaDictado = function (numNotas) {
+        var dictado = ([]);
+        this.b4.notasPosibles(this.c5);
+        this.c5.notasPosibles(this.b4, this.d5);
+        this.d5.notasPosibles(this.c5, this.e5);
+        this.e5.notasPosibles(this.d5, this.f5);
+        this.f5.notasPosibles(this.e5, this.g5);
+        this.g5.notasPosibles(this.f5, this.a5);
+        this.a5.notasPosibles(this.g5, this.b5);
+        this.b5.notasPosibles(this.a5, this.c6);
+        this.c6.notasPosibles(this.b5, this.d6);
+        this.d6.notasPosibles(this.c6, this.e6);
+        this.e6.notasPosibles(this.d6, this.f6);
+        this.f6.notasPosibles(this.e6, this.g6);
+        this.g6.notasPosibles(this.f6);
+        console.info("nota inicial " + dictado[0].getName());
+        /* add */ (this.dictadoString.push(/* get */ dictado[0].getName()) > 0);
+        var aux = 1;
+        while ((dictado.length < 20)) {
+            /* add */ (dictado.push(/* get */ dictado[aux - 1].eligeNotaSiguiente()) > 0);
+            /* add */ (this.dictadoString.push(/* get */ dictado[aux].getName()) > 0);
+            aux++;
+        }
+        ;
+        return (this.dictadoString);
+    };
+    return DictadoFacil;
+}());
+DictadoFacil.numNotasposibles = 13;
+DictadoFacil["__class"] = "DictadoFacil";
+var TestFacil = (function () {
+    function TestFacil() {
+    }
+    TestFacil.main = function (args) {
+        var df = new DictadoFacil();
+        var dictado;
+        dictado = df.generaDictado(20);
+        var index = 0;
+        console.info("");
+        while ((index < dictado.length)) {
+            index++;
+        }
+        ;
+    };
+    return TestFacil;
+}());
+TestFacil["__class"] = "TestFacil";
+TestFacil.main(null);
