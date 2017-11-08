@@ -54,7 +54,7 @@ $(document).ready(function() {
     multiplay: true,
     volume: 0.9
   });
-  var dictado1=["C6","E6","C6","B5","G5","F5","E5","B5", "C6","A5","C6","E6","C6","B5","G5","F5","E5","B5", "C6","A5"];
+  var dictado1=["E5","G5","C6","B5","G5","F5","E5","B5", "D6","A5","C6","E6","C6","B5","G5","F5","E5","B5", "C6","A5"];
 
 
 /*--------------eventos cuando una nota es reconocida------------*/
