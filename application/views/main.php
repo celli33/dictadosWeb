@@ -6,7 +6,9 @@
 	<div class="section white" id="notas-sueltas">
 		<div class="row container">
 		  <h2 class="header">Dictados Notas Sueltas</h2>
-		  <p class="grey-text text-darken-3 lighten-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		  <p class="grey-text text-darken-3 lighten-3">El dictado de notas sueltas te ayuda a mejorar tu oído absoluto, ya qué al no estar atado a una tonalidad, puedes navegar sobre las notas sin problemas.</p>
+			<h5>Instrucciones</h5>
+			<p>Presiona en el boton abrir dictado. Cuando estés listo para iniciar presiona en iniciar dictado, luego comienza a escribir las notas según las escuches, al final puedes repetir el dictado o ver tu calificación.</p>
 		</div>
 		<div class="contenedor notasS" id="notasS">
 			<div class="datos-dictado">

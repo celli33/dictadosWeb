@@ -18,8 +18,8 @@
     </ul>
   </div>
   <div class="nav-header center">
-    <h1>Algún título</h1>
-    <div class="tagline">Slogan xd</div>
+    <h1>Bienvenido </h1>
+    <div class="tagline">Mejora tu oído</div>
   </div>
 </nav>
 
