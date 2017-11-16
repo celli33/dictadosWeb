@@ -1,4 +1,4 @@
-<?php if($this->session->userdata('usuario')!='') {?>
+<?php if($this->session->userdata('nivel')==3) {?>
   <nav class="nav-extended" >
       <div class="nav-background">
         <div class="pattern active" style="background-image: url('<?php echo base_url();?>/img/nav.png');" ></div>
