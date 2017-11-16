@@ -23,3 +23,8 @@
       <script src="<?php echo base_url();?>js/ion.sound.min.js" type="text/javascript"></script>
       <script src="<?php echo base_url();?>js/armonico.js" type="text/javascript"></script>
     </body>
+    <script>
+      $(document).ready(function() {
+        $('select').material_select();
+      });
+    </script>
