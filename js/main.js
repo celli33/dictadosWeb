@@ -1,4 +1,5 @@
-
+/*------------pendiente:
+que no se escriban de nuevo cuando hay mas de 3 repetidos*/
 
 $( document ).ready(function(){$(".button-collapse").sideNav();} );
 $(document).ready(function(){
@@ -15,7 +16,7 @@ $(document).ready(function() {
 /*------------------variables usadas-------------*/
   var contadorNumNotasCompas=0;
   var contadorCompases=0;
-  var botonNotas= $("a.button");
+  var botonNotas= $("a.botonNotasSueltas");
   var F=$(".F6");
   var E=$(".E6");
   var D=$(".D6");
@@ -35,6 +36,8 @@ $(document).ready(function() {
   var play;
   var botonCalificacion=botonNotas.clone();
   var controlEscritura=0;
+  var numVecesRepetido;
+
   ion.sound({
     sounds: [
       {name: "D5"},
@@ -80,7 +83,7 @@ $(document).ready(function() {
       console.log("pulsada "+this.className);
       var nota=this.className.split(' ')[1];
       notasdelDictado2.push(nota);
-      console.log("asd"+notasdelDictado2[i]);
+      //console.log("asd"+notasdelDictado2[i]);
       /*dibujo las notas---*/
       dibujaNotas(this.className);
       $("span.notas-compas").html("<p>notas del compas escritas: "+ contadorNumNotasCompas+"</p>");
@@ -88,117 +91,133 @@ $(document).ready(function() {
     }
   }
 /*--------------funcion que dibuja las notas cuando son reconocidas-------*/
-  function dibujaNotas(nombre) {
-    /*separo el nombre de las clases----*/
-    var div=nombre.split(' ')[0];
-    console.log(div);
-    var nombreNota=nombre.split(' ')[1];
-    var band=0;
-    console.log(nombreNota);
-    var nota=$(".nota"+nombreNota);
-    /*-----checo que la nota no esté en el compás y si está la clono---*/
-    if(jQuery.inArray(nota[0], notasdelCompas)!=-1)
-    { band=1;
-      console.log("ya estoy en el array");
-      var aux=nota.clone();
-      aux.appendTo("."+nombreNota)
-      console.log(aux);
-    }
-    /*------hacemos un switch para cada nota del compas y así saber en que parte
-    del width dibujarla-----*/
-    switch (contadorNumNotasCompas) {
-      case 1:
-      /*-------si no es el primer compas limpiamos las notas del compas----*/
-        if(contadorCompases>0){
-            for (var i = 0; i < notasdelCompas.length; i++) {
-              notasdelCompas[i].style.display="none";
+function dibujaNotas(nombre) {
+  /*separo el nombre de las clases----*/
+  console.log("contador notas del compas"+contadorNumNotasCompas);
+  var div=nombre.split(' ')[0];
+  var nombreNota=nombre.split(' ')[1];
+  var band=0;
+  console.log("nombre nota: "+nombreNota);
+  var nota=$(".nota"+nombreNota);
+  /*-----checo que la nota no esté en el compás y si está la clono---*/
+  if(jQuery.inArray(nota[0], notasdelCompas)!=-1)
+  { band=1;
+    console.log("ya estoy en el array");
+    var aux=nota.clone();
+    console.log("asdfsd1 "+aux[0].className);
+    aux.addClass("clonada");
+    aux.appendTo("."+nombreNota);
+    console.log("asdfsd "+aux[0].className);
+    //console.log(aux);
+  }
+  /*------hacemos un switch para cada nota del compas y así saber en que parte
+  del width dibujarla-----*/
+  switch (contadorNumNotasCompas) {
+    case 1:
+    /*-------si no es el primer compas limpiamos las notas del compas----*/
+      if(contadorCompases>0){
+        $(".nota").css("display","none");
+        $(".nota").css("left","auto");
+          for (var i = 0; i < notasdelCompas.length; i++) {
+            console.log("notas del compas a ocultar"+notasdelCompas[i].className);
+            notasdelCompas[i].style.display="none";
+            //console.log("nota clonada "+notasdelCompas[i].className.split(" ")[2]);
+            if(notasdelCompas[i].className.split(" ")[2]=="clonada")
+            {console.log("remover "+notasdelCompas[i].className );
+              notasdelCompas[i].remove();
             }
-            notasdelCompas=[];
-        }
-        /*-------si la nota está ya en el compas dibujas la nota clonada----*/
-        if(band==1)
-        {
-         aux[0].style.display="block"
-         aux[0].style.left="20%";
-         notasdelCompas.push(aux[0]);
-         notasdelDictado.push(aux[0]);
-         console.log("clonada");
-
-        }
-        else
-        {notasdelCompas.push(nota[0]);
-          notasdelDictado.push(nota[0]);
-          nota[0].style.left="20%";
-          nota[0].style.display="block";
-        }
-      break;
-      case 2:
-      /*-------si la nota está ya en el compas dibujas la nota clonada----*/
-        if(band==1)
-        {aux[0].style.display="block"
-         aux[0].style.left="40%";
-         notasdelCompas.push(aux[0]);
-         notasdelDictado.push(aux[0]);
-         console.log("clonada");
-        }
-        else
-        { notasdelCompas.push(nota[0]);
-          notasdelDictado.push(nota[0]);
-          nota[0].style.left="40%";
-          nota[0].style.display="block";
-        }
-      break;
-      case 3:
+          }
+          notasdelCompas=[];
+      }
       /*-------si la nota está ya en el compas dibujas la nota clonada----*/
       if(band==1)
-      {aux[0].style.display="block"
-       aux[0].style.left="60%";
-       notasdelCompas.push(aux[0]);
-       notasdelDictado.push(aux[0]);
-       console.log("clonada");
+      {$(".nota"+nombreNota+".clonada")[0].style.left="20%";
+      $(".nota"+nombreNota+".clonada")[0].style.display="block"
+       notasdelCompas.push($(".nota"+nombreNota+".clonada")[0]);
+       notasdelDictado.push($(".nota"+nombreNota+".clonada")[0]);
+       console.log("clonada1");
+
       }
-      else{
+      else
+      {notasdelCompas.push(nota[0]);
+        notasdelDictado.push(nota[0]);
+        nota[0].style.left="20%";
+        nota[0].style.display="block";
+        console.log("nota nueva 1");
+      }
+    break;
+    case 2:
+    /*-------si la nota está ya en el compas dibujas la nota clonada----*/
+      if(band==1)
+      {console.log("clonada2 "+aux[0].className);
+      console.log($(".notaC6.clonada"));
+       $(".nota"+nombreNota+".clonada")[0].style.left="40%";
+       $(".nota"+nombreNota+".clonada")[0].style.display="block"
+       notasdelCompas.push($(".nota"+nombreNota+".clonada")[0]);
+       notasdelDictado.push($(".nota"+nombreNota+".clonada")[0]);
+
+      }
+      else
+      { notasdelCompas.push(nota[0]);
+        notasdelDictado.push(nota[0]);
+        nota[0].style.left="40%";
+        nota[0].style.display="block";
+        console.log("nota nueva 2");
+      }
+    break;
+    case 3:
+    /*-------si la nota está ya en el compas dibujas la nota clonada----*/
+    if(band==1)
+    {$(".nota"+nombreNota+".clonada")[0].style.left="60%";
+    $(".nota"+nombreNota+".clonada")[0].style.display="block"
+    notasdelCompas.push($(".nota"+nombreNota+".clonada")[0]);
+    notasdelDictado.push($(".nota"+nombreNota+".clonada")[0]);
+     console.log("clonada3");
+    }
+    else{
+      notasdelCompas.push(nota[0]);
+      notasdelDictado.push(nota[0]);
+        nota[0].style.left="60%";
+        nota[0].style.display="block";
+        console.log("nota nueva 3");
+    }
+    break;
+    case 4:
+      /*-------si la nota está ya en el compas dibujas la nota clonada----*/
+    if(band==1)
+    {$(".nota"+nombreNota+".clonada")[0].style.left="80%";
+    $(".nota"+nombreNota+".clonada")[0].style.display="block"
+    notasdelCompas.push($(".nota"+nombreNota+".clonada")[0]);
+    notasdelDictado.push($(".nota"+nombreNota+".clonada")[0]);
+     console.log("nombre de aux"+aux[0].className);
+     console.log("clonada4");
+    }
+    else{
         notasdelCompas.push(nota[0]);
         notasdelDictado.push(nota[0]);
-          nota[0].style.left="60%";
-          nota[0].style.display="block";
+        nota[0].style.left="80%";
+        nota[0].style.display="block";
+        console.log("nota nueva 4");
       }
-      break;
-      case 4:
-        /*-------si la nota está ya en el compas dibujas la nota clonada----*/
-      if(band==1)
-      {aux[0].style.display="block"
-       aux[0].style.left="80%";
-       notasdelCompas.push(aux[0]);
-       notasdelDictado.push(aux[0]);
-       console.log("nombre de aux"+aux[0].className);
-       console.log("clonada");
-      }
-      else{
-          notasdelCompas.push(nota[0]);
-          notasdelDictado.push(nota[0]);
-          nota[0].style.left="80%";
-          nota[0].style.display="block";
-        }
-        /*----receteamos el numero de notas por compas aumentamos el num-compas*/
-          contadorNumNotasCompas=0;
-          contadorCompases++;
-          /*si el dictado ya termino*/
-          if(contadorCompases>4)
-          { console.log(notasdelDictado.length+" "+notasdelDictado);
-            contadorCompases=0;
-            botonNotas.html("repetir dictado");
-            botonCalificacion.html("ver califacion")
-            botonCalificacion.appendTo($("div.calificacion"))
-            controlDictado=1;
-            i=0;
+      /*----receteamos el numero de notas por compas aumentamos el num-compas*/
+        contadorNumNotasCompas=0;
+        contadorCompases++;
+        /*si el dictado ya termino*/
+        if(contadorCompases>4)
+        { console.log(notasdelDictado.length+" "+notasdelDictado);
+          contadorCompases=0;
+          botonNotas.html("repetir dictado");
+          botonCalificacion.html("ver califacion")
+          botonCalificacion.appendTo($("div.calificacion"))
+          controlDictado=1;
+          i=0;
 
-          }
-          console.log("tamaño de notas del Compas "+notasdelCompas.length+" "+ notasdelCompas.className);
-      break;
-      default:
-    }
-  }//dibujaNotas
+        }
+        console.log("tamaño de notas del Compas "+notasdelCompas.length+" ");
+    break;
+    default:
+  }
+}//dibujaNotas
 
   function playNotas() {
     //dibujo el pentagrama y con controlDictado veo que acción realizar
@@ -245,7 +264,7 @@ function reproducirDictado() {
   // play sound
 
     play =  setInterval(function() {
-      reproducirNota()
+      reproducirNota();
     },4000);
 }
 
