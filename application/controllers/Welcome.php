@@ -29,6 +29,20 @@ class Welcome extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	public function maestro(){
+		$this->load->view('header');
+		$this->load->view('encabezadoMaestro');
+		$this->load->view('main');
+		$this->load->view('footer');
+	}
+
+	public function admin(){
+		$this->load->view('header');
+		$this->load->view('encabezadoAdmin');
+		$this->load->view('main');
+		$this->load->view('footer');
+	}
+
 	public function login(){
 		$this->load->view('header');
 		$this->load->view('encabezado');
@@ -36,8 +50,32 @@ class Welcome extends CI_Controller {
 		$this->load->view('footer');
 	}
 
-	///metodos
+	public function altaMaestro(){
+		$this->load->view('header');
+		$this->load->view('encabezadoAdmin');
+		$cadena="select * from persona";
+		$data['personas']=$this->bases_model->getQuery($cadena);
+		$this->load->view('altaMaestro',$data);
+		$this->load->view('footer');
+	}
 
+	///metodos
+	public function ingresaMaestro(){
+		$this->form_validation->set_rules('maestro','maestro','required');
+		$this->form_validation->set_message('required','<div class="red-text" >El campo %s es obligatorio</div>');
+		if ($this->form_validation->run() != FALSE){
+			$data["data"] = array(
+				'maestro' => $this->input->post('maestro')
+				);
+			if($this->bases_model->ingresaMaestro($data["data"])==TRUE){
+				redirect('/Welcome/admin/', 'location');
+			}else{
+				redirect('/Welcome/altaMaestro/', 'location');
+			}
+		}else{			
+			redirect('/Welcome/altaMaestro/', 'location');			
+		}
+	}
 	public function iniciarSesion(){
 
 		$this->form_validation->set_rules('email','email','required');
@@ -63,10 +101,25 @@ class Welcome extends CI_Controller {
 							'usuario' => $row->usuario,
 							'correo' => $row->correo,
 							'contraseña' => $row->contraseña,
+							'nivel' => 0
 						);
+				}			
+				if($datasession['usuario']=='Admin'){//nivel 1
+					$datasession['nivel']=1;
+					$this->session->set_userdata($datasession);
+					redirect('/Welcome/admin/', 'location');
+				}else{
+					if($this->bases_model->esMaestro($datasession)!=FALSE){//nivel 2 es profe
+						$datasession['nivel']=2;
+						$this->session->set_userdata($datasession);
+						redirect('/Welcome/maestro/', 'location');
+					}else{//nivel 3 es alumno
+						$datasession['nivel']=3;
+						$this->session->set_userdata($datasession);
+						redirect('/Welcome/alumno/', 'location');
+					}
 				}
-				$this->session->set_userdata($datasession);
-				redirect('/Welcome/alumno/', 'location');
+				
 			}
 		}else{
 			$this->login();
@@ -74,7 +127,7 @@ class Welcome extends CI_Controller {
 	}
 
 	public function cerrarSesion(){
-		$datasession = array('usuario' => '');
+		$datasession = array('nivel' => '');
 		$this->session->unset_userdata($datasession);
 		$this->session->sess_destroy();
 		redirect('/Welcome/index/', 'refresh');
@@ -98,10 +151,12 @@ class Welcome extends CI_Controller {
 		    	'contraseña'=> $this->input->post('contraseña'),
 		    	);
 		    
-		    $this->bases_model->registrarse($data["data"]);
-		    $this->index();
+		    if($this->bases_model->registrarse($data["data"])==TRUE)
+		    	redirect('/Welcome/index/', 'location');
+		    else
+		    	redirect('/Welcome/registro/', 'location');
 		}else{
-			$this->registro();
+			redirect('/Welcome/registro/', 'location');
 		}
 	}
 }
