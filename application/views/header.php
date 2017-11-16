@@ -21,4 +21,5 @@
       <script type="text/javascript" src="<?php echo base_url();?>js/materialize.min.js"></script>
       <script src="<?php echo base_url();?>js/main.js" type="text/javascript"></script>
       <script src="<?php echo base_url();?>js/ion.sound.min.js" type="text/javascript"></script>
+      <script src="<?php echo base_url();?>js/armonico.js" type="text/javascript"></script>
     </body>

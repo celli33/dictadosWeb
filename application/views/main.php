@@ -73,8 +73,93 @@
 		<div class="row container">
 		  <h2 class="header">Dictados Armónicos</h2>
 		  <p class="grey-text text-darken-3 lighten-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		</div>
-	</div>
+		</div><!--row container-->
+			<div class="contenedor armonico" id="armonico">
+				<div class="datos-dictadoAr">
+					<span class="notas-compas-armonicoG "></span>
+					<span class="num-compas-armonicoG"></span>
+					<span class="aciertos-armonicoG"></span>
+					<span class="notas-compas-armonicoF "></span>
+					<span class="num-compas-armonicoF"></span>
+					<span class="aciertos-armonicoF"></span>
+				</div>
+				<div class="pentagrama">
+					<div class="clave">
+						<img src="<?php echo base_url();?>img/gcleff2" alt="clave de sol">
+					</div>
+					<div class="line-space-ar F6">
+							<span class="line"><span class="nota notaF6"></span></span>
+					</div>
+					<div class="line-space-ar E6">
+							<span class="space"><span class="nota notaE6"></span></span>
+					</div>
+					<div class="line-space-ar D6">
+							<span class="line"><span class="nota notaD6"></span></span>
+					</div>
+					<div class="line-space-ar C6">
+							<span class="space"><span class="nota notaC6"></span></span>
+					</div>
+					<div class="line-space-ar B5">
+							<span class="line"><span class="nota notaB5"></span></span>
+					</div>
+					<div class="line-space-ar A5">
+							<span class="space"><span class="nota notaA5"></span></span>
+					</div>
+					<div class="line-space-ar G5">
+							<span class="line"><span class="nota notaG5"></span></span>
+					</div>
+					<div class="line-space-ar F5">
+							<span class="space"><span class="nota notaF5"></span></span>
+					</div>
+					<div class="line-space-ar E5">
+							<span class="line"><span class="nota notaE5"></span></span>
+					</div>
+					<div class="line-space-ar D5">
+							<span class="space"><span class="nota notaD5"></span></span>
+					</div>
+				</div><!---pentagrama-->
+				<div class="pentagramaF">
+					<div class="clave claveF">
+						<img class="img-F"src="<?php echo base_url();?>img/fclef" alt="clave de fa">
+					</div>
+					<div class="llave">
+						<img class="img-llave"src="<?php echo base_url();?>img/llave.png" alt="llave">
+					</div>
+					<div class="line-space-arF A4">
+							<span class="line"><span class="nota notaA4"></span></span>
+					</div>
+					<div class="line-space-arF G4">
+							<span class="space"><span class="nota notaG4"></span></span>
+					</div>
+					<div class="line-space-arF F4">
+							<span class="line"><span class="nota notaF4"></span></span>
+					</div>
+					<div class="line-space-arF E4">
+							<span class="space"><span class="nota notaE4"></span></span>
+					</div>
+					<div class="line-space-arF D4">
+							<span class="line"><span class="nota notaD4"></span></span>
+					</div>
+					<div class="line-space-arF C4">
+							<span class="space"><span class="nota notaC4"></span></span>
+					</div>
+					<div class="line-space-arF B3">
+							<span class="line"><span class="nota notaB3"></span></span>
+					</div>
+					<div class="line-space-arF A3">
+							<span class="space"><span class="nota notaA3"></span></span>
+					</div>
+					<div class="line-space-arF G3">
+							<span class="line"><span class="nota notaG3"></span></span>
+					</div>
+					<div class="line-space-arF F3">
+							<span class="space"><span class="nota notaF3"></span></span>
+					</div>
+				</div><!---pentagrama-->
+			</div><!--contenedor-->
+			<a href="#DicArmonico"  class="button botonArmonico"> abrir dictado de Práctica</a>
+			<div class="Calificacion">
 
-
+			</div>
+	</div><!-- section white-->
 </body>
