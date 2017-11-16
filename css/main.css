@@ -11,6 +11,10 @@ div.contenedor{
 
 }
 
+div.contenedor.armonico{
+  height: 800px;
+}
+
 a.button{
   background-color: #039be5;
   color: black;
@@ -21,12 +25,17 @@ a.button{
   margin-top: 10px;
 }
 
-.line-space{
+.line-space, .line-space-ar, .line-space-arF {
   position: absolute;
   left: 69px;
   width: 100%;
   height: 10px;
   padding-top: 4px;
+}
+
+span.aciertos-armonicoF p, .num-compas-armonicoG p, .aciertos-armonicoG p, .notas-compas-armonicoF p,
+.num-compas-armonicoF p, .aciertos-armonicoF p, .notas-compas-armonicoG p{
+  margin:5px 0 2px 0;
 }
 
 .line{
@@ -42,14 +51,17 @@ span.nota{
   height: 20px;
   border-radius: 100%;
   border:1px solid black;
-  display: none;
+  display:none;
 }
 
-.notaF6, .notaE6, .notaD6, .notaC6, .notaB5, .notaA5, .notaG5, .notaF5, .notaE5, .notaD5{
+
+.notaF3, .notaG3, .notaA3, .notaB3, .notaC4, .notaD4,.notaE4, .notaF4, .notaG4, .notaA4, .notaF6, .notaE6, .notaD6, .notaC6, .notaB5, .notaA5, .notaG5, .notaF5, .notaE5, .notaD5{
   position: absolute;
   top:-2px;
   left: auto;
 }
+
+
 
 div.clave{
   top: 170px;
@@ -57,6 +69,26 @@ div.clave{
   max-width: 100%;
 position: absolute;
 
+}
+
+div.clave.claveF{
+  top:468;
+  left: 57px;
+}
+
+.img-F{
+  width: 75%;
+}
+
+div.llave{
+  position: absolute;
+  top: 247px;
+  left: -212px;
+  display: none;
+}
+
+.img-llave{
+  height: 200px;
 }
 
 div.pentagrama{
