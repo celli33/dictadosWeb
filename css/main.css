@@ -1,3 +1,9 @@
+body.body-ini{
+  background-color: #2962ff;
+}
+body{
+  background-color: #f4f4f4;
+}
 nav.nav-extended{
   background-color: #2962ff;
 }
@@ -98,4 +104,8 @@ div.pentagrama{
 .datos-dictado{
   margin: 10px;
   padding: 10px;
+}
+
+footer.page-footer{
+  background-color: #2962ff;
 }
