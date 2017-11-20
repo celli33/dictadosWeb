@@ -13,7 +13,7 @@
 
     <link href="<?php echo base_url();?>css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="<?php echo base_url();?>css/gallery-materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link rel="stylesheet" href="<?php echo base_url();?>css/main.css" type="text/css" >
+    <link href="<?php echo base_url();?>css/main.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
     <body>
       <!--Import jQuery before materialize.js-->
@@ -27,4 +27,7 @@
       $(document).ready(function() {
         $('select').material_select();
       });
+      $(document).ready(function(){
+      $('.slider').slider();
+    });
     </script>
