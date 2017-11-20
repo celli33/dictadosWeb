@@ -11,6 +11,7 @@
       <ul class="right hide-on-med-and-down">
         <li><a href="<?php echo base_url();?>index.php/Welcome/alumno" class="waves-effect waves-light">Inicio</a></li>
         <li><a href="#" class="waves-effect waves-light">Iniciar Dictado</a></li>
+        <li><a href="#" class="waves-effect waves-light">Examen de práctica</a></li>
         <li><a href="#" class="waves-effect waves-light"><i class="material-icons">search</i></a></li>
         <li><a href="<?php echo base_url();?>index.php/Welcome/cerrarSesion" class="waves-effect waves-light">Cerrar Sesión</a></li>
       </ul>
@@ -24,6 +25,7 @@
   <ul class="side-nav" id="nav-mobile">
     <li><a href="#" class="waves-effect waves-blue"><i class="material-icons left">home</i>Inicio</a></li>
     <li><a href="#" class="waves-effect waves-blue"><i class="material-icons left">play_arrow</i>Iniciar Dictado</a></li>
+    <li><a href="#" class="waves-effect waves-blue"><i class="material-icons left">description</i>Examen de práctica</a></li>
     <li><a href="#" class="waves-effect waves-blue"><i class="material-icons left">output</i>Cerrar Sesión</a></li>
     <li><a href="#" class="waves-effect waves-blue"><i class="material-icons left">search</i>Buscar</a></li>
   </ul>
