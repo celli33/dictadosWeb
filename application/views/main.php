@@ -1,8 +1,11 @@
 <?php  header("Access-Control-Allow-Origin: http://localhost"); ?>
 <body>
+
 	<div class="parallax-container">
 		<div class="parallax"><img src="<?php echo base_url();?>/img/image1.jpg"></div>
 	</div>
+
+
 	<div class="section white" id="notas-sueltas">
 		<div class="row container">
 		  <h2 class="header">Dictados Notas Sueltas</h2>
@@ -54,21 +57,62 @@
 		</div><!--contenedor-->
 		<a href="#notasS" class="button botonNotasSueltas"> abrir dictado de Práctica</a>
 		<div class="Calificacion">
-
 		</div>
 	</div><!--section-->
+
 	<div class="parallax-container">
 		<div class="parallax"><img src="<?php echo base_url();?>/img/image2.jpg"></div>
 	</div>
-	<div class="section white">
+
+
+
+	<div class="section white" id="DicRitmico">
 		<div class="row container">
 		  <h2 class="header">Dictados Rítmicos</h2>
 		  <p class="grey-text text-darken-3 lighten-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div><!--row containier-->
+		<div class="container ritmico clearfix">
+			<form class="formRitmico clearfix" id="formRitmico">
+				<h3 class="pasos">Compas 1</h3>
+            <div class="imagen">
+              <img class="img1" src="<?php echo base_url();?>img/ritmos/1-good.png" alt="imagen 1">
+              <input type="checkbox" name="subject" value="" class="list"> opcion 1
+            </div>
+            <div class="imagen">
+              <img class="img2" src="<?php echo base_url();?>img/ritmos/1-good.png" alt="imagen 2">
+              <input type="checkbox" name="subject" value="" class="list"> opcion 2
+            </div>
+           <!--<div class="imagen">
+              <img src="<?php echo base_url();?>img/03.jpg" alt="imagen 3">
+              <input type="checkbox" name="subject" value="" class="list"> opcion 3
+            </div>
+            <div class="imagen">
+              <img src="<?php echo base_url();?>img/4-feik.jpg" alt="imagen 4">
+              <input type="checkbox" name="subject" value="" class="list"> opcion 4
+            </div>-->
+      </form>
+		</div><!--container ritmico-->
+		<div class="enviar clearfix" id="enviar">
+			<a href="#formRitmico" class="button siguiente"> Siguiente</a>
+			<a href="#formRitmico" class="button repetir">Repetir</a>
+			<!--<a href="#" class="button limpiar">Limpiar</a>-->
 		</div>
-	</div>
+
+		<a href="#formRitmico"  class="button botonRitmico"> abrir dictado de Práctica</a>
+		<div class="Calificacion">
+
+		</div>
+		<span class="datos">hola</span>
+	</div><!--section white ritmicos-->
+
+
 	<div class="parallax-container">
 		<div class="parallax"><img src="<?php echo base_url();?>/img/image3.jpg"></div>
 	</div>
+
+
+
+
 	<div class="section white">
 		<div class="row container">
 		  <h2 class="header">Dictados Armónicos</h2>
