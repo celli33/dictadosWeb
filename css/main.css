@@ -109,3 +109,66 @@ div.pentagrama{
 footer.page-footer{
   background-color: #2962ff;
 }
+
+
+/*-------------------Ritmico----------------*/
+
+img{
+  width: 100%;
+  max-width: 100%;
+}
+
+img:hover{
+  -webkit-transform: scale(1.1);
+  -webkit-transition: all .8s ease-in-out;
+}
+div.imagen{
+  text-align: center;
+  margin:10px;
+  padding: 10px;
+  float:left;
+  width: 45%;
+  display: inline-block;
+}
+
+div.enviar{
+  text-align: center;
+  display: inline-block;
+}
+
+a.botonRitmico{
+  display: block;
+  width: 20%;
+ text-align: center;
+}
+
+a.revisar{
+
+}
+
+a.limpiar{
+}
+
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked{
+  opacity: 1;
+  position:relative;
+  pointer-events: auto;
+  left:0;
+}
+
+div.ritmico{
+  display:none;
+}
+
+div.enviar{
+  display: none;
+}
+
+.formRitmico{
+  display: none;
+}
+
+
+span.datos{
+  display: none;
+}
