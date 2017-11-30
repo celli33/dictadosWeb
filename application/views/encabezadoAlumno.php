@@ -4,7 +4,7 @@
     <li><a href="#" class="waves-effect waves-teal">Rítmicos</a></li>
     <li><a href="#" class="waves-effect waves-teal">Armónicos</a></li>
   </ul>
-  <nav class="nav-extended" >
+  <nav class="nav-extended" > 
       <div class="nav-background">
         <div class="pattern active" style="background-image: url('<?php echo base_url();?>/img/nav.png');" ></div>
       </div>
