@@ -39,4 +39,4 @@
 <?php }
 else
     redirect('/Welcome/index/', 'location');
-?>
+?> 
