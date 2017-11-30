@@ -2,7 +2,7 @@
     <div class="nav-background">
       <div class="pattern active" style="background-image: url('<?php echo base_url();?>/img/nav.png');" ></div>
     </div>
-    <div class="nav-wrapper container">
+    <div class="nav-wrapper container">  
     <a href="#" itemprop="url" class="brand-logo site-logo">Dictados Musicales</a>
 
     <a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
