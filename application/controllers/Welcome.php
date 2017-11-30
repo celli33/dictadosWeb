@@ -39,7 +39,7 @@ class Welcome extends CI_Controller {
 	public function admin(){
 		$this->load->view('header');
 		$this->load->view('encabezadoAdmin');
-		$this->load->view('main');
+		$this->load->view('mainIni');
 		$this->load->view('footer');
 	}
 
@@ -59,7 +59,44 @@ class Welcome extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+
+	public function verGrupos(){//nuevo
+		$this->load->view('header');
+		$this->load->view('encabezadoMaestro');
+		$cadena="select * from grupo where idPersona='".$this->session->userdata('idPersona')."'";
+		$data['grupos']=$this->bases_model->getQuery($cadena);
+		$this->load->view('verGrupos',$data);
+		$this->load->view('footer');
+	}
+	public function verGruposA(){//nuevo
+		$this->load->view('header');
+		$this->load->view('encabezadoAlumno');
+		$cadena="select ga.Calificacion, ga.idPersona, ga.idGrupo, g.nombre from grupo_has_alumno as ga inner join grupo as g on g.idGrupo=ga.idGrupo where ga.idPersona='".$this->session->userdata('idPersona')."'";
+		$data['grupos']=$this->bases_model->getQuery($cadena);
+		$this->load->view('verGruposA',$data);
+		$this->load->view('footer');
+	}
 	///metodos
+	public function verGrupo(){//nuevo
+		$this->form_validation->set_rules('grupo','grupo','required');
+		$this->form_validation->set_message('required','<div class="red-text" >El campo %s es obligatorio</div>');
+		if ($this->form_validation->run() != FALSE){
+
+			$this->load->view('header');
+			$this->load->view('encabezadoMaestro');		
+			$cadena="select p.idPersona, p.nombre, p.usuario from maestro as m inner join persona as p on p.idPersona!=m.idPersona and p.nombre!='Admin' group by p.idPersona";		
+			$data['alumnos']=$this->bases_model->getQuery($cadena);
+			$data['idGrupo']=$this->input->post('grupo');
+
+			$cadena="select p.idPersona, p.nombre, p.usuario, a.numDictados, a.promedio, ga.Calificacion from grupo_has_alumno as ga inner join persona as p on ga.idPersona=p.idPersona inner join alumno as a on a.idPersona=p.idPersona where ga.idGrupo='".$this->input->post('grupo')."'";		
+			$data['grupo']=$this->bases_model->getQuery($cadena);
+			
+			$this->load->view('grupos',$data);
+			$this->load->view('footer');
+		}else{			
+			redirect('/Welcome/verGrupos/', 'location');			
+		}
+	}
 	public function ingresaMaestro(){
 		$this->form_validation->set_rules('maestro','maestro','required');
 		$this->form_validation->set_message('required','<div class="red-text" >El campo %s es obligatorio</div>');
@@ -74,6 +111,45 @@ class Welcome extends CI_Controller {
 			}
 		}else{			
 			redirect('/Welcome/altaMaestro/', 'location');			
+		}
+	}
+	public function ingresaAlumno(){
+		$this->form_validation->set_rules('alumno','alumno','required');
+		$this->form_validation->set_message('required','<div class="red-text" >El campo %s es obligatorio</div>');
+		if ($this->form_validation->run() != FALSE){
+			$data["data"] = array(
+				'alumno' => $this->input->post('alumno'),
+				'grupo' => $this->input->post('idGrupo')
+				);
+			$this->bases_model->ingresaAlumno($data["data"]);//
+
+			if($this->bases_model->ingresaAlumnoEnGrupo($data["data"])==TRUE)
+				echo "hecho";
+			else
+				echo "hubo un error";
+
+			redirect('/Welcome/verGrupos/', 'location');
+		}else{			
+			redirect('/Welcome/verGrupos/', 'location');			
+		}
+	}
+	public function ingresaGrupo(){
+		$this->form_validation->set_rules('nombre','nombre','required');
+		$this->form_validation->set_rules('numAlumnos','numAlumnos','required');
+		$this->form_validation->set_message('required','<div class="red-text" >El campo %s es obligatorio</div>');
+		if ($this->form_validation->run() != FALSE){
+			$data["data"] = array(
+				'nombre' => $this->input->post('nombre'),
+				'numAlumnos' => $this->input->post('numAlumnos'),
+				'idPersona' => $this->session->userdata('idPersona')
+				);
+			if($this->bases_model->ingresaGrupo($data["data"])==TRUE){
+				redirect('/Welcome/maestro/', 'location');
+			}else{
+				redirect('/Welcome/verGrupos/', 'location');
+			}
+		}else{			
+			redirect('/Welcome/verGrupos/', 'location');			
 		}
 	}
 	public function iniciarSesion(){
