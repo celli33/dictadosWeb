@@ -26,7 +26,7 @@ public class Nota {
 		
 		//System.out.println("tamaño del Array notas Posibles: "+notasPosibles.length+ " de la nota "+this.name);
 		//hacemos un for segun el tamaño del array recibido para agregar las notas al array de notasPosibles
-		for(int i=0;i<notasPosibles.length;i++)
+		for(int i=0; i<notasPosibles.length;i++)
 		{ //agregamos la nota posible al arrayList
 		   this.notasPosibles.add(notasPosibles[i]);
 		   //System.out.println("Agregando Nota Posible:"+ notasPosibles[i].name+" a nota "+this.name);
@@ -82,11 +82,4 @@ public class Nota {
 		
 		return(null);
 	}
-
-	
-	
-	
-	
-	
-
 }
