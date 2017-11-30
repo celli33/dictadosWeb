@@ -59,7 +59,7 @@ public class DictadoFacil {
 		
 		//generamos la nota inicial del dictado aleatoramiente
 		dictado.add(this.generaNotaInicial());
-		System.out.println("nota inicial "+ dictado.get(0).getName());
+		System.out.println("nota inicial " + dictado.get(0).getName());
 		dictadoString.add(dictado.get(0).getName());
 		int aux=1;
 		while(dictado.size()<20)
