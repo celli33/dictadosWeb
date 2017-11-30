@@ -46,6 +46,39 @@ class bases_model extends CI_Model {
         return TRUE;
     }
 
+    public function ingresaAlumno($data){
+        $cadena="select * from alumno where idPersona=".$data['alumno']."";
+        if($this->getQuery($cadena)!=FALSE)
+           return FALSE;
+
+        $cadena="insert into alumno(numDictados,promedio,idPersona) values(0,0,".$data['alumno'].")";
+        //echo var_dump($cadena);
+        $query = $this->db->query($cadena);
+        return TRUE;
+    }
+
+    public function ingresaAlumnoEnGrupo($data){
+        $cadena="select * from grupo_has_alumno where idPersona=".$data['alumno']." and idGrupo=".$data['grupo']."";
+        if($this->getQuery($cadena)!=FALSE)
+           return FALSE;
+
+        $cadena="insert into grupo_has_alumno(idGrupo,idPersona) values(".$data['grupo'].",".$data['alumno'].");";
+        //echo var_dump($cadena);
+        $query = $this->db->query($cadena);
+        return TRUE;
+    }
+
+    public function ingresaGrupo($data){
+        $cadena="select * from grupo where nombre='".$data['nombre']."' and idPersona='".$data['idPersona']."'";
+        if($this->getQuery($cadena)!=FALSE)
+           return FALSE;
+
+        $cadena="insert into grupo(numAlumnos,nombre,idPersona) values('".$data['numAlumnos']."','".$data['nombre']."','".$data['idPersona']."');";
+        //echo var_dump($cadena);
+        $query = $this->db->query($cadena);
+        return TRUE;
+    }
+
     public function iniciarSesion($data){
         $cadena="select * from persona where correo='".$data['email']."' and contraseña='".$data['contraseña']."'";
         $query = $this->db->query($cadena);
