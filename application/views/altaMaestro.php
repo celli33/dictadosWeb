@@ -7,7 +7,7 @@
                 <option value="" disabled selected>Elige a quien dar de alta para ser un maestro</option>
                 <?php foreach($personas->result() as $fila) { ?>
                     <option value="<?=$fila->idPersona?>"><?=$fila ->nombre." - ".$fila ->usuario?></option><?php 
-                }?>
+                }?> 
             </select>
         </div>
         <input type="submit" id="button" class="btn-flat" value="enviar" class="boton">
