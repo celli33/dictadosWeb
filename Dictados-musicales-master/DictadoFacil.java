@@ -79,7 +79,7 @@ public class DictadoFacil {
 	public Nota generaNotaInicial()
 	{
 		//definimos un random para el numero aleatorio
-		Random rnd= new Random();
+		Random rnd=new Random();
 		//casteamos el aleatorio y lo ponemos en un rango de 0 al numero de notas Posibles
 		int aux=(int) (rnd.nextDouble()*this.numNotasposibles);
 		
